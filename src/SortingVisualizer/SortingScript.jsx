@@ -3,8 +3,10 @@ import './SortingVisualizer.css';
 import * as sortingAlgs from '../SortingAlgorithms/sortingAlgs';
 
 const ANIMATION_SPEED = 1;
+const BAR_WIDTH = 20;
 const ORIGINAL_COLOUR = 'darkviolet';
-const NUM_RECTS = 80;
+const SCREEN_WIDTH = window.innerWidth;
+const NUM_RECTS = (SCREEN_WIDTH) / (BAR_WIDTH);
 
 class Rectangle {
     constructor(value, currIndex) {
@@ -30,7 +32,7 @@ export default class SortingVisualizer extends React.Component {
         const rects = [];
         const screenHeight = window.innerHeight;
         for (let i = 0; i < NUM_RECTS; i++) {
-            let rand = randValue(10, screenHeight);
+            let rand = randValue(10, screenHeight - 100);
             let tempRect = new Rectangle(rand, i);
             rects.push(tempRect);
         }
@@ -277,13 +279,6 @@ export default class SortingVisualizer extends React.Component {
         for (let i = 0; i < 1; i++) {
             //let testArrayOne = generateNums(10);
             //let testArrayTwo = [...testArrayOne];
-
-            // let mySortedArray = sortingAlgs.mergeSortTestHelper(this.state.rects);
-            // this.setState({ rects: mySortedArray }, () => {
-            //     console.log(this.state.rects);
-            // }); 
-            //let nativeSortedArray = testArrayTwo.sort(function(a, b){return a-b});
-            //console.log(arraysEqual(mySortedArray, nativeSortedArray));
         }
     
     }
