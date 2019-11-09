@@ -1,0 +1,34 @@
+.rect {
+    width: 10px;
+    display: inline-block;
+    margin: 0 2px;
+    background-color: blueviolet;
+	vertical-align: text-top;
+}
+
+.options-bar {
+	margin-top: 0;
+	overflow: hidden;
+	background-color: #333;
+}
+
+.options-bar button {
+    cursor: pointer;
+	background-color: #333;
+  	border: none;
+  	color: white;
+  	padding: 20px 20px;
+  	text-align: center;
+  	text-decoration: none;
+  	display: inline-block;
+  	font-size: 16px;
+}
+
+.options-bar button:hover {
+	background-color: #ddd;
+	color: black;
+}
+
+.options-bar #generate-nums {
+	float:left
+}
