@@ -1,8 +1,8 @@
 .rect {
     width: 10px;
     display: inline-block;
-    margin: 0 2px;
-    background-color: blueviolet;
+    margin: 0 1px;
+    background-color: darkviolet;
 	vertical-align: text-top;
 }
 
@@ -20,7 +20,7 @@
   	padding: 20px 20px;
   	text-align: center;
   	text-decoration: none;
-  	display: inline-block;
+  	float:left;
   	font-size: 16px;
 }
 
@@ -30,5 +30,52 @@
 }
 
 .options-bar #generate-nums {
+	float:left;
+	margin-right: 5px;
+}
+
+.slide-container {
 	float:left
+}
+
+.slider-text {
+	float:left;
+	color:white;
+	font-size: 16px;
+	font-family: Arial, Helvetica, sans-serif;
+	margin-top: 20px;
+}
+
+.slider {
+	-webkit-appearance: none;
+	width: 150px;
+	margin: 22px;
+	height: 15px;
+	background: #d3d3d3;
+	outline: none;
+	opacity: 0.7;
+	-webkit-transition: .2s;
+	transition: opacity .2s;
+	float:left;
+	direction: rtl;
+}
+
+.slider:hover {
+	opacity: 1;
+}
+  
+.slider::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 20px;
+	height: 20px;
+	background: purple;
+	cursor: pointer;
+}
+  
+.slider::-moz-range-thumb {
+	width: 20px;
+	height: 20px;
+	background: purple;
+	cursor: pointer;
 }

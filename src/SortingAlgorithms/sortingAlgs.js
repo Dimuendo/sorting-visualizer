@@ -2,6 +2,14 @@
 //                              MERGE SORT                                   //
 ///////////////////////////////////////////////////////////////////////////////
 
+class AnimationMerge {
+    constructor(compare, overwrite, type) {
+        this.compare = compare;
+        this.overwrite = overwrite;
+        this.type = type;
+    }
+}
+
 export function mergeSort(rects) {
     const animationsMerge = [];
     rects = mergeSortHelper(rects, animationsMerge);
@@ -27,18 +35,21 @@ function merge(left, right, animationsMerge) {
 	let l = 0;
 	let r = 0;
     let currIndex = left[0].currIndex;
+    let animationMerge;
 
 	while (l < leftLength && r < rightLength) {
-        animationsMerge.push([left[l].currIndex, right[r].currIndex]);
-        animationsMerge.push([left[l].currIndex, right[r].currIndex]);
+        animationMerge = new AnimationMerge([left[l].currIndex, right[r].currIndex], 0, 'compare');
+        animationsMerge.push(animationMerge);
 		if (left[l].value < right[r].value) {
-            animationsMerge.push([currIndex, left[l].value]);
+            animationMerge = new AnimationMerge(0, [currIndex, left[l].value], 'overwrite');
+            animationsMerge.push(animationMerge);
             left[l].currIndex = currIndex;
             currIndex++;
             sortedArr.push(left[l]);
 			l++;
 		} else {
-            animationsMerge.push([currIndex, right[r].value]);
+            animationMerge = new AnimationMerge(0, [currIndex, right[r].value], 'overwrite');
+            animationsMerge.push(animationMerge);
             right[r].currIndex = currIndex;
             currIndex++;
 			sortedArr.push(right[r]);
@@ -47,20 +58,18 @@ function merge(left, right, animationsMerge) {
 	}
 
 	while (l < leftLength) {
-        animationsMerge.push([left[l].currIndex, left[l].currIndex]);
-        animationsMerge.push([left[l].currIndex, left[l].currIndex]);
-        animationsMerge.push([currIndex, left[l].value]);
         left[l].currIndex = currIndex;
+        animationMerge = new AnimationMerge(0, [currIndex, left[l].value], 'overwrite');
+        animationsMerge.push(animationMerge);
         currIndex++;
 		sortedArr.push(left[l]);
 		l++;
 	}
 
 	while (r < rightLength) {
-        animationsMerge.push([right[r].currIndex, right[r].currIndex]);
-        animationsMerge.push([right[r].currIndex, right[r].currIndex]);
-        animationsMerge.push([currIndex, right[r].value]);
         right[r].currIndex = currIndex;
+        animationMerge = new AnimationMerge(0, [currIndex, right[r].value], 0, 'overwrite');
+        animationsMerge.push(animationMerge);
         currIndex++;
 		sortedArr.push(right[r]);
 		r++;
@@ -74,9 +83,11 @@ function merge(left, right, animationsMerge) {
 ///////////////////////////////////////////////////////////////////////////////
 
 class AnimationQuick {
-    constructor(compare, swap, type) {
+    constructor(compare, swap, choosePivot, choosePartition, type) {
         this.compare = compare;
         this.swap = swap;
+        this.choosePivot = choosePivot;
+        this.choosePartition = choosePartition;
         this.type = type;
     }
 }
@@ -108,19 +119,31 @@ function partition(rects, pivot, low, high, animationsQuick) {
     let partitionIndex = low;
     let animationQuick;
 
+    animationQuick = new AnimationQuick(0, 0, pivot, 0, 'choosePivot');
+    animationsQuick.push(animationQuick);
+    animationQuick = new AnimationQuick(0, 0, 0, partitionIndex, 'choosePartition');
+    animationsQuick.push(animationQuick);
+
     for (let i = low; i < high; i++) {
-        animationQuick = new AnimationQuick([i, pivot], 0, 'compare');
+        animationQuick = new AnimationQuick(i, 0, 0, 0, 'compare');
         animationsQuick.push(animationQuick);
         if (rects[i].value < pivotValue.value) {
-            animationQuick = new AnimationQuick(0, [i, partitionIndex], 'swap');
+            if (i === partitionIndex) {
+                partitionIndex++;
+                continue;
+            }
+            animationQuick = new AnimationQuick(0, [i, partitionIndex], 0, 0, 'swap');
             animationsQuick.push(animationQuick);
             swap(rects, i, partitionIndex);
             partitionIndex++;
+            animationQuick = new AnimationQuick(0, 0, 0, partitionIndex, 'choosePartition');
+            animationsQuick.push(animationQuick);
         }
     }
-    animationQuick = new AnimationQuick(0, [high, partitionIndex], 'swap');
+    animationQuick = new AnimationQuick(0, [high, partitionIndex], 0, 0, 'swap');
     animationsQuick.push(animationQuick);
     swap(rects, high, partitionIndex);
+
     return partitionIndex;
 }
 
@@ -164,34 +187,42 @@ function bubbleSortHelper(rects, animationsBub) {
 ///////////////////////////////////////////////////////////////////////////////
 
 class AnimationSelect {
-    constructor(compare, swap, type) {
+    constructor(compare, swap, chooseMin, type) {
         this.compare = compare;
         this.swap = swap;
+        this.chooseMin = chooseMin;
         this.type = type;
     }
 }
 
 export function selectionSort(rects) {
-    const animationsBub = [];
-    selectionSortHelper(rects, animationsBub);
-    return animationsBub;
+    const animationsSelect = [];
+    selectionSortHelper(rects, animationsSelect);
+    return animationsSelect;
 }
 
 export function selectionSortHelper(rects, animationsSelect) {
-    let minIndex;
+    let minIndex = -1;
     let len = rects.length;
     let animationSelect;
+    let lastMin;
 
     for (let i = 0; i < len; i++) {
+        lastMin = minIndex;
         minIndex = i;
+        animationSelect = new AnimationSelect(0, 0, [lastMin, minIndex], 'chooseMin');
+        animationsSelect.push(animationSelect);
         for (let j = i + 1; j < len; j++) {
-            animationSelect = new AnimationSelect([j, minIndex], 0, 'compare');
+            animationSelect = new AnimationSelect(j, 0, 0, 'compare');
             animationsSelect.push(animationSelect);
             if (rects[j].value < rects[minIndex].value) {
+                lastMin = minIndex;
                 minIndex = j;
+                animationSelect = new AnimationSelect(0, 0, [lastMin, minIndex], 'chooseMin');
+                animationsSelect.push(animationSelect);
             }
         }
-        animationSelect = new AnimationSelect(0, [i, minIndex], 'swap');
+        animationSelect = new AnimationSelect(0, [i, minIndex], 0, 'swap');
         animationsSelect.push(animationSelect);
         swap(rects, i, minIndex);
     }
@@ -202,16 +233,11 @@ export function selectionSortHelper(rects, animationsSelect) {
 //                              USEFUL FUNCTIONS                             //
 ///////////////////////////////////////////////////////////////////////////////
 function swap(rects, i, j) {
-    // const tempIndex = rects[i].currIndex;
-    // rects[i].currIndex = rects[j].currIndex;
-    // rects[j].currIndex = tempIndex;
+    const tempIndex = rects[i].currIndex;
+    rects[i].currIndex = rects[j].currIndex;
+    rects[j].currIndex = tempIndex;
 
     const temp = rects[i];
     rects[i] = rects[j];
     rects[j] = temp;
 }
-
-function randValue(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
