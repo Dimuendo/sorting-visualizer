@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Dimuendo/sorting-visualizer.git/precache-manifest.8243b10b81edf57afe666cebfd449696.js"
+  "/Dimuendo/sorting-visualizer.git/precache-manifest.a9144c92a40fda88c307317751a6922f.js"
 );
 
 self.addEventListener('message', (event) => {
