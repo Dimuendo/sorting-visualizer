@@ -17,7 +17,7 @@ export default class SortingVisualizer extends React.Component {
 
         this.state = {
             rects: [],
-            barWidth: 17,
+            barWidth: 35,
             animationSpeed: 8,
         };
 
@@ -174,8 +174,8 @@ export default class SortingVisualizer extends React.Component {
                 setTimeout(() => {
                     rectOneStyle.backgroundColor = ORIGINAL_COLOUR;
                     rectTwoStyle.backgroundColor = ORIGINAL_COLOUR;
-                }, (animationTimer + 5) * animationSpeed);
-                animationTimer += 5;
+                }, (animationTimer + 10) * animationSpeed);
+                animationTimer += 11;
             
             // If it's an overwrite, change the height of the rectangle at the index given
             } else if (aniType === 'overwrite') {
@@ -429,7 +429,7 @@ export default class SortingVisualizer extends React.Component {
                     <button id="generate-nums" onClick={() => this.resetRects(this.state.barWidth * 10 + 2)}> Generate Numbers  </button>
                     <div className="slide-container">
                         <p className="slider-text">Set Array Size: </p>
-                        <input type="range" id="num-slider" min="1" max="32" step="1" defaultValue={this.state.barWidth} className="slider" onChange={this.updateRectSize}></input>
+                        <input type="range" id="num-slider" min="20" max="50" step="1" defaultValue={this.state.barWidth} className="slider" onChange={this.updateRectSize}></input>
                         <p className="slider-text">Set Animation Speed: </p>
                         <input type="range" id="speed-slider" min="1" max="15" step="1" defaultValue={this.state.animationSpeed} className="slider" onChange={this.updateSpeed}></input>
                     </div>
