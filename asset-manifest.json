@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/Dimuendo/sorting-visualizer.git/static/css/main.c5c74c40.chunk.css",
-    "main.js": "/Dimuendo/sorting-visualizer.git/static/js/main.1559a21e.chunk.js",
-    "main.js.map": "/Dimuendo/sorting-visualizer.git/static/js/main.1559a21e.chunk.js.map",
-    "runtime-main.js": "/Dimuendo/sorting-visualizer.git/static/js/runtime-main.9884dcf2.js",
-    "runtime-main.js.map": "/Dimuendo/sorting-visualizer.git/static/js/runtime-main.9884dcf2.js.map",
-    "static/js/2.96ebbd06.chunk.js": "/Dimuendo/sorting-visualizer.git/static/js/2.96ebbd06.chunk.js",
-    "static/js/2.96ebbd06.chunk.js.map": "/Dimuendo/sorting-visualizer.git/static/js/2.96ebbd06.chunk.js.map",
-    "index.html": "/Dimuendo/sorting-visualizer.git/index.html",
-    "precache-manifest.a9144c92a40fda88c307317751a6922f.js": "/Dimuendo/sorting-visualizer.git/precache-manifest.a9144c92a40fda88c307317751a6922f.js",
-    "service-worker.js": "/Dimuendo/sorting-visualizer.git/service-worker.js",
-    "static/css/main.c5c74c40.chunk.css.map": "/Dimuendo/sorting-visualizer.git/static/css/main.c5c74c40.chunk.css.map"
+    "main.css": "/sorting-visualizer/static/css/main.c5c74c40.chunk.css",
+    "main.js": "/sorting-visualizer/static/js/main.4adcb7f4.chunk.js",
+    "main.js.map": "/sorting-visualizer/static/js/main.4adcb7f4.chunk.js.map",
+    "runtime-main.js": "/sorting-visualizer/static/js/runtime-main.d83c0c80.js",
+    "runtime-main.js.map": "/sorting-visualizer/static/js/runtime-main.d83c0c80.js.map",
+    "static/js/2.96ebbd06.chunk.js": "/sorting-visualizer/static/js/2.96ebbd06.chunk.js",
+    "static/js/2.96ebbd06.chunk.js.map": "/sorting-visualizer/static/js/2.96ebbd06.chunk.js.map",
+    "index.html": "/sorting-visualizer/index.html",
+    "precache-manifest.6f3e4c490a7f5436c3659558b8e224b7.js": "/sorting-visualizer/precache-manifest.6f3e4c490a7f5436c3659558b8e224b7.js",
+    "service-worker.js": "/sorting-visualizer/service-worker.js",
+    "static/css/main.c5c74c40.chunk.css.map": "/sorting-visualizer/static/css/main.c5c74c40.chunk.css.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.9884dcf2.js",
+    "static/js/runtime-main.d83c0c80.js",
     "static/js/2.96ebbd06.chunk.js",
     "static/css/main.c5c74c40.chunk.css",
-    "static/js/main.1559a21e.chunk.js"
+    "static/js/main.4adcb7f4.chunk.js"
   ]
 }
